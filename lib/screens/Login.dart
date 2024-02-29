@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:pomomemo/components/AppSpacer.dart';
+import 'package:pomomemo/components/TextInputComponent.dart';
+import 'package:pomomemo/utils/AppAssets.dart';
 import 'package:pomomemo/utils/AppColors.dart';
 import 'package:pomomemo/utils/AppFunction.dart';
 
@@ -13,22 +15,26 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late double screenWidth = 30;
   TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      backgroundColor: AppColors.BACKGROUND_1,
+      //backgroundColor: AppColors.BACKGROUND_1,
+      backgroundColor: AppColors.COLOR_WHITE,
       body: Center(
         child: SingleChildScrollView(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //----------------- Logo -----------------
-            // Image.asset(
-            //   Assets.LOGO,
-            //   height: 90,
-            // ),
+            Image.asset(
+              Assets.LOGO,
+              //height: 90,
+            ),
             const AppSpacer(
               height: 10,
             ),
@@ -38,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
             ),
             const AppSpacer(
-              height: 5,
+              height: 10,
             ),
             //----------------- Sign in to continue Text -----------------
             Text(
@@ -48,10 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold,
                   color: AppColors.COLOR_PINK),
             ),
+            //----------------- Textfields -----------------
             Container(
-              width: isTablet()
-                  ? MediaQuery.of(context).size.width / 3
-                  : MediaQuery.of(context).size.width,
+              width: isTablet() ? screenWidth / 3 : screenWidth,
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -59,6 +64,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //----------------- EMAIL TEXTFIELD -----------------
+                  TextInputComponent(
+                      controller: controller, hintText: 'Enter your Email'),
+                  const AppSpacer(
+                    height: 5,
+                  ),
+                  TextInputComponent(
+                      controller: controller, hintText: 'Enter your Password'),
                 ],
               ),
             )

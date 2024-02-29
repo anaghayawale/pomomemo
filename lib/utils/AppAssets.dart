@@ -4,5 +4,5 @@ class Assets {
   static String NO_ENTER_ICON = 'assets/noEnterIcon.png';
   static String VIDEO_START = 'assets/start.png';
   static String TRASH = 'assets/trash.png';
-  static String LOGO = 'assets/logo.png';
+  static String LOGO = 'assets/newLogo.png';
 }
